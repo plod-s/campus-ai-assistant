@@ -39,8 +39,7 @@ class Dog:
 
 
 p11 = Dog('金毛', '黄色')
-p11.eat()
+p11.eat()  # ch
 p11.drink()
 p11.run()
 print(p11.color)
-
