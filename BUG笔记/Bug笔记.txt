@@ -1,0 +1,58 @@
+第 2 题 · 异常处理
+
+写一个 AA 分账程序：输入总金额和人数，
+用 try/except 处理错误（输入非数字、人数为 0），出错时给友好提示而不是崩溃。
+
+'''
+try:
+    total = float(input('输入总金额:'))
+    sum_people = int(input('输入总人数:'))
+    average = total / sum_people
+    print(f'每人需要付{average:.2f}元')
+except Exception as e:
+    print(f'输入的为非数字,人数为0,请重新输入,原因:{e}')
+
+第 3 题 · 异常处理
+从零复现 04 那个 Person 类：3 个方法 + 创建 2 个实例 + 各调用一个方法
+'''
+
+
+# class Person:
+#     def yun_ying(self):
+#         print('我能执行运营的工作')
+#
+#     def cai_wu(self):
+#         print('我能执行财务的工作')
+#
+#     def qian_tai(self):
+#         print('我能执行前台对的工作')
+#
+#
+# p1 = Person()
+# p1.yun_ying()
+# p1.cai_wu()
+#
+# p2 = Person()
+# p2.qian_tai()
+
+Person vs Person()--------踩坑（漏括号）→ 报错 → 懂了
+异常是运行时才发生的----------亲手做实验（人数=0 没触发 → 加除法后触发了）
+f-string 的 f 不能漏--------静默 bug（{e} 原样输出）
+:.2f 格式化-----------------主动问了"怎么保留两位小数"
+
+
+
+# Bug 笔记
+
+## 2026-10-16 · 面向对象：self 与封装
+- **现象**：不明白 get_balance 为什么能读到私有的 __balance
+- **原因**：私有是"对外藏"，不是"对内藏"；类内部的方法都能访问
+- **结论**：
+  1. self = 调用方法的那个对象
+  2. 属性存在对象自己的 __dict__（各自的储物柜）
+  3. 封装 = 对外锁 + 对内开 + 正门有规矩
+
+## 2026-10-16 · Solution vs Solution()
+- **现象**：TypeError: twoSum() missing 1 required positional argument
+- **原因**：Solution 是类（模板），Solution() 才是对象
+- **结论**：**创建对象必须加括号**（我踩了两次）
