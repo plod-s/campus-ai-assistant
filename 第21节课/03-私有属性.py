@@ -1,6 +1,6 @@
 class Person:
     # 对于所有对象共享的一个值----可以定义为类属性
-    country = '中国'   # 所有对象可以共享
+    country = '中国'  # 所有对象可以共享
 
     # 自动赋值的工具-----初始化方法 __init__   (shift+-)
     def __init__(self, xingming, nianling, gangweixinxi, xingbie, qian):
@@ -9,6 +9,16 @@ class Person:
         self.gangwei = gangweixinxi
         self.gender = xingbie
         self.__money = qian  # 定义为私有属性, 在python当中,没有真正的私有化---君子论迹不论心
+
+    def get_money(self):
+            return self.__money
+
+    def set_money(self, value):
+        if value < 0:  # ③ 规矩
+            raise ValueError('资产不能是负数')
+        self.__money = value  # ② 写
+
+        # ===== 新增到这里结束 =====
 
     # 参数
     def qiantian(self):  # 当前那个对象去调用这个方法, self就是当前调用的对象
@@ -23,8 +33,7 @@ class Person:
         print('拥有财务管理的能力')
 
 
-# 当我们创建对象的时候,就会主动触发执行init方法
-p1 = Person('lzy', 20, '全能型', '男', '100万')  # 既然都是要做赋值-----封装成一个方法---专门用于赋值工具
-p1.qiantian()  # 工作留痕-----谁干了这个活 每个对象没有他专属个性特征(属性)
-print(p1.name)
-print(p1._Person__money)
+p1 = Person('小王', 12, 'qiantai', 'nan', 2000)
+print(p1.set_money(100))
+print(p1.get_money())
+print(p1.set_money(-100))
