@@ -22,7 +22,7 @@ p1 = Person('l', 21, 'male')
 ● 行为（方法）：吃 eat、喝 drink、跑 run
 '''
 
-
+# 课中练习
 class Dog:
     def __init__(self, name, color):
         self.name = name
