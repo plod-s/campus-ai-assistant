@@ -1,0 +1,9 @@
+def outer():
+    msg = "你好"
+    return msg
+<details> <summary>答案</summary>
+不是闭包。
+
+它返回的是字符串 "你好"，不是函数
+没有任何"内层函数"去捕获 msg
+闭包必须"返回一个函数" —— 只有函数才能"记住"环境。
