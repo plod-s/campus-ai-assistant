@@ -1,16 +1,26 @@
-def timer(func):
-    def wrapper():
-        import time
+'''
+装饰器:装饰器就是一个函数(或类),接受一个函数作为参数,并返回另一个函数
+在不改变原有函数的基础上去进行添加额外的功能
+'''
+
+import time
+
+
+def shijian(func):
+    print(func)
+    def ceshi():
         start = time.time()
         func()
-        print(f'耗时 {time.time()-start:.4f} 秒')
-    return wrapper
+        end = time.time()
+        cost = end - start
+        print(f'程序运行时间:{cost}')
+    return ceshi
 
 
-@timer
-def slow():
-    total = 0
-    for i in range(1000000):
-        total += i
+@shijian  # demo = shijian(demo)
+def demo():  # demo = ceshi(ceshi)
+    sum = 0
+    for i in range(1, 100001):
+        sum += i
 
-slow()
+demo()# 表面是demo实际调用的是ceshi
