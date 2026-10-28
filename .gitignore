@@ -1,0 +1,15 @@
+# 虚拟环境
+.venv/
+venv/
+
+# PyCharm
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# ⚠️ API Key —— 绝不提交
+key.txt
+.env
+*.key
